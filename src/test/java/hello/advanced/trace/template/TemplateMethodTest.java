@@ -27,6 +27,18 @@ public class TemplateMethodTest {
         template2.execute();
     }
 
+    @Test
+    void templateMethodV2() {
+        AbstractTemplate template1 = new AbstractTemplate() {
+            @Override
+            protected void call() {
+                log.info("비즈니스 로직1 실행");
+            }
+        };
+
+        template1.execute();
+    }
+
 
     private void logic1() {
         long startTime = System.currentTimeMillis();
