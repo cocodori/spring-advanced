@@ -22,5 +22,4 @@ class ExamTest {
             examService.request("data" + i);
         }
     }
-
 }
