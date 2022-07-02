@@ -1,5 +1,6 @@
 package hello.advanced.aop.exam;
 
+import hello.advanced.aop.exam.aop.RetryAspect;
 import hello.advanced.aop.exam.aop.TraceAspect;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -8,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 
 @Slf4j
-@Import(TraceAspect.class)
+@Import({TraceAspect.class, RetryAspect.class})
 @SpringBootTest
 class ExamTest {
     @Autowired
@@ -17,7 +18,7 @@ class ExamTest {
     @Test
     void test() {
         for (int i = 0; i < 5; i++) {
-            log.info("client reuqest i={}", i);
+            log.info("client request i={}", i);
             examService.request("data" + i);
         }
     }
